@@ -1,23 +1,65 @@
 import logo from './logo.svg';
 import './App.css';
+import React, {useEffect, useState} from "react"
+import NavBar from './components/NavBar';
+import { Switch, Route } from "react-router-dom";
+import Home from './pages/Home';
+import GamePage from './pages/GamePage';
+import { GameContext } from './GameContext';
+import LoginForm from './/components/LoginForm';
+import { UserContext } from './UserContext';
+import SignUp from './/components/SignUp';
+import LoginPage from './pages/LoginPage';
+import ShoppingCartPage from './pages/ShoppingCartPage';
+
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [gameData, setGameData]= useState('')
+
+  useEffect(() => {
+    fetch("/api/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+  console.log(user)
+  useEffect(()=>{
+      fetch('/api/products')
+      .then(res=>res.json())
+      .then(res=> setGameData(res))
+
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<NavBar/>
+<Switch>
+  <UserContext.Provider value={{user, setUser}}>
+  <GameContext.Provider value={gameData}>
+<Route path="/home">
+            <Home/>
+           </Route>
+           <Route path="/games">
+            <GamePage/>
+           </Route>
+           <Route path="/login">
+            <LoginForm/>
+           </Route>
+           <Route path="/signup">
+            <SignUp/>
+           </Route>
+           <Route path="/loginPage">
+            <LoginPage/>
+           </Route>
+           <Route path="/shoppingCart">
+            <ShoppingCartPage/>
+           </Route>
+
+
+           </GameContext.Provider>
+           </UserContext.Provider >
+</Switch>
     </div>
   );
 }
