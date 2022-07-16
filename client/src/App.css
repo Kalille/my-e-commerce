@@ -1,3 +1,5 @@
+@import 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css';
+ 
  /* .App {
   background:rgb(61, 59, 59);
   
@@ -42,12 +44,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+ 
 } 
 
  body{
    font-family: montserrat;
   background: radial-gradient(#fff, rgb(64, 62, 62));
-
+ 
 }
 
 .cart-wrapper{
@@ -239,14 +243,7 @@ justify-content: space-around;
   color: rgb(1, 1, 1);
 }
 
-/* .col-2 h1{
 
-  font-family: "Permanent Marker", cursive;
-  font-size: 3rem;
-  color:  blue;
-  margin: 0;
-  line-height: 0.2;
-} */
 
 .explore-button{
   display: inline-block;
@@ -261,9 +258,6 @@ justify-content: space-around;
   background: radial-gradient(#fff, rgb(64, 62, 62));
 }
 
-/* .home-header .home-row{
-  margin-top: 70px;
-} */
 
 
 .game-header{
@@ -294,6 +288,10 @@ justify-content: space-around;
     height: 150px;
     width: 200px;
   }
+
+  .cart-stuff p{
+    display: none;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -313,3 +311,229 @@ justify-content: space-around;
   }
 }
 
+
+
+.big-container{
+ display: grid;
+
+
+
+}
+.product-container{
+
+  display:grid; 
+   grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 110px;
+
+}
+
+.product-card{
+/* display:grid; */
+width: fit-content;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+/* .product-card {
+  overflow: hidden;
+  box-shadow:0 2px 20px gray;
+  flex-direction: column;
+ display:flex;
+  flex-wrap: wrap;
+  transition:transform 200ms ease-in;
+  width: 650px;
+  height: 650px;
+  cursor: pointer;
+} */
+
+.product-card:hover{
+  transform: translateY(-15px);
+  transition: transform .3s;
+
+}
+
+.text1{
+  font-size: 13px;
+  color: #0a0a0a;
+
+}
+
+.info{
+  line-height: 17px;
+
+}
+
+.thumbsUp{
+  color: rgb(190, 91, 91) ;
+}
+
+.thumbsUp:hover{
+  color:rgb(246, 7, 7);
+}
+
+.cost span{
+  color: #fb3531;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
+.shoe{
+  background: #dc3545;
+}
+
+
+.profile-wrapper{
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+width: 75%;
+display: flex;
+box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
+
+}
+
+.profile-wrapper .left{
+  width: 35%;
+  background: linear-gradient(to bottom, hsl(0, 96%, 50%),#df5a01);
+  padding: 30px,25px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  color: #fff;
+}
+
+.profile-wrapper .left img{
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.profile-wrapper .left h4{
+  margin-bottom: 10px;
+
+}
+
+.profile-wrapper .left p{
+font-size: 12px;
+}
+
+.profile-wrapper .right{
+width: 100%;
+background: #fff;
+border-top-right-radius: 5px;
+border-top-right-radius: 5px;
+padding: 30px 25px;
+}
+
+.profile-wrapper .right .profile-info,
+.profile-wrapper .right .profile-pro{
+
+  margin-bottom: 25px;
+}
+
+.profile-wrapper .right .profile-info h3,
+.profile-wrapper .right .profile-pro h3{
+
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #353c4e;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.profile-wrapper .right .info-data,
+.profile-wrapper .right .pro-data{
+
+ display: flex;
+ justify-content: space-between;
+}
+
+.profile-wrapper .right .info-data .profile-data,
+.profile-wrapper .right .pro-data .profile-data{
+
+width: 45%;
+}
+
+.profile-wrapper .right .info-data .profile-data h4,
+.profile-wrapper .right .pro-data .profile-data h4{
+
+color: #e71010;
+margin-bottom: 5px;
+}
+
+.profile-wrapper .right .info-data .profile-data p,
+.profile-wrapper .right .pro-data .profile-data p{
+
+font-size: 20px;
+margin-bottom: 10px;
+color: #292a2c;
+}
+
+/* cart items */
+
+.cart-page{
+  margin: 80px auto ;
+
+
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-stuff{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+th{
+  width: 100%;
+  text-align: left;
+  padding: 5px;
+  color: #fff;
+  background: #ff523b;
+  font-weight: normal;
+}
+td{
+  padding: 10px 5px;
+}
+
+td input{
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+}
+
+td a{
+  color: #ff523b;
+  font-size: 12px;
+}
+
+td img{
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+ .total-price{
+   display: flex;
+   justify-content: flex-end;
+ }
+
+ .total-price table{
+
+  border-top: 3px solid #ff523b;
+  width: 100%;
+  max-width: 400px;
+ }
+
+ td:last-child{
+   text-align: right;
+ }
+th:last-child{
+  text-align: right;
+}

@@ -1,3 +1,23 @@
-import { createContext } from "react";
+import { createContext,useState } from "react";
 
-export const Context= createContext(null)
+const UserContext= createContext();
+
+function UserProvider({children}){
+    const [user, setUser]=useState(null);
+
+    const onLogin = (userInfo)=>{
+        setUser(userInfo)
+    }
+    return(
+        <UserContext.Provider value={{user,setUser, onLogin}}>
+    
+            {children}
+        </UserContext.Provider>)
+
+}
+
+
+
+
+
+export {UserContext, UserProvider}

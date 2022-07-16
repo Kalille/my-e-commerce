@@ -9,7 +9,7 @@ import { UserContext } from '../UserContext';
 
 function LoginPage({ onLogin }) {
     const [showLogin, setShowLogin] = useState(true);
-    // const [user,setUser] = useContext(UserContext);
+    const [user,setUser] = useState(null);
   
     return (
       <Wrapper>

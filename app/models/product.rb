@@ -3,9 +3,10 @@ class Product < ApplicationRecord
     has_many :users, through: :product_reviews
     has_many :liked_product
     has_many :users, through: :liked_products
-    has_many :carts
-    has_many :line_items
-    belongs_to :user
+ 
+    has_many :line_items, dependent: :destroy
+    has_many :carts, through: :line_items
+    # belongs_to :user
   
 
     def liked(current_user)

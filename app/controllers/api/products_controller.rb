@@ -1,16 +1,22 @@
 class Api::ProductsController < ApplicationController
-    skip_before_action :authorize, only: [:create, :index, :show, :search]
+    skip_before_action :authorize
     def index 
-        render json: Product.all.order(id: "asc"), include: [:product_reviews, :liked_product]
+    
+        render json: Product.all.order(name: 'desc'), include: [:product_reviews, :liked_product]
     end
     def show 
         product = Product.find_by(id: params[:id])
-        render json: product
+        render json: product,include: [:product_reviews, :liked_product]
       end
 
+      def new
+        @product = Product.new
+        render json: @product
+      end
+      
       def create
    
-        product = Product.create!(product_params)
+        product = Product.create(product_params)
       
         render json: product, status: :created
        
@@ -27,6 +33,6 @@ class Api::ProductsController < ApplicationController
       private
 
       def product_params
-        params.permit(:name, :description, :price)
+        params.permit(:name, :description, :price, :image_url)
       end
 end

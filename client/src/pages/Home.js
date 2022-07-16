@@ -1,9 +1,12 @@
 import React from 'react'
-
+// import   fetchAllProductsAsync from './ecommerceSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Home=()=>{
 
-
+    // const dispatch = useDispatch()
+    // const products = useSelector((state) => state.ecommerce.products)
+    // console.table(dispatch(fetchAllProductsAsync))
     return(
         <div className='home-header'>  
                 <div className='home-row'>

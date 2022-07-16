@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_24_231126) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_15_044309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,10 +44,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_231126) do
 
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_carts_on_product_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -65,8 +63,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_231126) do
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.text "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "product_reviews", force: :cascade do |t|
@@ -93,11 +100,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_231126) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "carts", "products"
   add_foreign_key "carts", "users"
   add_foreign_key "liked_products", "products"
   add_foreign_key "liked_products", "users"

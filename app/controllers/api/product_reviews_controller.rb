@@ -3,14 +3,15 @@ class Api::ProductReviewsController < ApplicationController
     skip_before_action :authorize, only: [:index]
 
     def index
-      
-        render json: ProductReview.all
+    
+        render json: ProductReview.all, include: [:user]
+
       end
 
       def create
-   
-        review = @current_user.product_reviews.create!(review: params[:review], product_id: params[:product][:id])
-   
+    
+        review = @current_user.product_reviews.create!(review: params[:review], product_id: params[:product_id])
+  
       
         render json: review, status: :created
      
@@ -38,6 +39,6 @@ class Api::ProductReviewsController < ApplicationController
 
       private
       def review_params
-        params.permit(:review, :user_id, :comic_id)
+        params.permit(:review, :user_id)
       end
 end
