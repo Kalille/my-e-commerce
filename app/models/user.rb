@@ -6,7 +6,7 @@ include Rails.application.routes.url_helpers
     validates :password_digest, presence: true, length: {minimum: 8}
     validates :email, presence: true, uniqueness: true, format: {with: /\A(?<username>[^@\s]+)@((?<domain_name>[-a-z0-9]+)\.(?<domain>[a-z]{2,}))\z/i}
    
-    # has_many :line_items
+    has_many :check_outs
     has_many :product_reviews
     has_many :created_products, class_name: "Product"
     # has_one :created_cart, class_name: 'Cart', foreign_key: :user_id

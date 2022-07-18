@@ -10,6 +10,7 @@ import store from '../src/store'
 import { UserProvider } from '../src/UserContext';
 import { GameProvider } from '../src/GameContext';
 import { CartProvider } from './context/CartContext';
+import emailjs from '@emailjs/browser'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,14 @@ root.render(
       <CartProvider>
   <BrowserRouter>
    <Provider store={store}>
+   <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+  ( function(){
+      emailjs.init("YDI0u74rcgGXbO-JB")
+   })();
+</script>
  
   <script src="https://kit.fontawesome.com/fd5b151f10.js" crossOrigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>

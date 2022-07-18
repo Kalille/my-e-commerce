@@ -23,13 +23,13 @@ const thumbsUpIcon = <svg xmlns="http://www.w3.org/2000/svg" width="30" height="
 </svg>
 
     return(
-   
+        <center>
         <div className='big-container'>
         <div className='product-container mb-5 mt-5'>
             {merch ? merch.map((game,i)=>{
                 return <div key={i}className='row'>
           
-                <div className='col-md-4'>
+                <div   className='col-md-4'>
                     <div className='product-card mt-3'>
                         <div className='product-1 align-items-center p-2 text-center'>
                             <img src={game.image_url} alt='none' className='rounded' width='160'/>
@@ -44,7 +44,7 @@ const thumbsUpIcon = <svg xmlns="http://www.w3.org/2000/svg" width="30" height="
                                       
                         
                                 
-                                  <LikeButton id={game?.id} likeCount={game.liked_product.length} />
+                                  {/* <LikeButton id={game?.id} likeCount={game.liked_product.length} /> */}
                                     </div>
                                 </div>
                         </div>
@@ -62,7 +62,7 @@ const thumbsUpIcon = <svg xmlns="http://www.w3.org/2000/svg" width="30" height="
 
 </div>
 
-
+</center>
 
 
 

@@ -116,15 +116,6 @@ console.log(passwordConfirmation)
           onChange={handleChange}
         />
       </FormField>
-      {/* <FormField>
-        <Label htmlFor="bio">Bio</Label>
-        <Textarea
-          rows="3"
-          id="bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
-      </FormField> */}
       <FormField>
         <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
       </FormField>

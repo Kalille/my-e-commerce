@@ -15,6 +15,8 @@ import { UserContext } from '../src/UserContext';
 import GameShowPage from './pages/GameShowPage'
 import UserProfilePage from './pages/UserProfilePage';
 import { CartContext } from '../src/context/CartContext';
+import CheckOutPage from './pages/CheckOutPage';
+import EditReview from './pages/EditReview';
 
 
 
@@ -51,6 +53,8 @@ fetchData()
     }
 fetchData()
   },[setUser])
+
+  if (!user) return <LoginPage onLogin={setUser} />;
   return (
     <div className="App">
     
@@ -82,6 +86,13 @@ fetchData()
            <Route path="/user">
             <UserProfilePage/>
            </Route>
+           <Route path="/checkout">
+            <CheckOutPage/>
+           </Route>
+           <Route path="/edit/:id">
+            <EditReview/>
+           </Route>
+
 
 
            

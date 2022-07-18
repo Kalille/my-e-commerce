@@ -24,7 +24,7 @@ class Api::ProductReviewsController < ApplicationController
       end
 
       def update
-        review = @current_user.prouct_reviews.find_by(id: params[:id])
+        review = @current_user.product_reviews.find_by(id: params[:id])
         review.update!(review_params)
         render json: review
 

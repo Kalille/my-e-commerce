@@ -14,7 +14,9 @@ class Api::UsersController < ApplicationController
       render json: user, status: :created
     end
 
-  
+    def my_reviews
+      render json: @current_user.product_reviews.all
+    end
   
     def show
    

@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id , :username,:password_digest, :image_format, :attachment_format,:cart, :products, :reviewed_products , :image_url ,:email
+  attributes :id , :username,:password_digest, :image_format, :attachment_format,:cart, :products, :reviewed_products , :image_url ,:email , :check_outs 
  
   # :my_cart
   def image_format

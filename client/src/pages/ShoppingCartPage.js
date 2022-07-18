@@ -1,13 +1,25 @@
-import React,{useState,useContext,useEffect}from "react";
+import React,{useState,useContext,useEffect,useRef}from "react";
 import { CartContext } from '../context/CartContext';
 import Button from "../styles/Button";
 import { UserContext } from '../UserContext';
+import { useHistory } from "react-router-dom";
+
 
 const ShoppingCartPage=()=>{
     const {cart, setCart} = useContext(CartContext)
     const {user} = useContext(UserContext)
     const [total,setTotal] =useState('')
     const [quantity,setQuantity] =useState('')
+    const [errors,setErrors] =useState([])
+    const [emailParams, setEmailParams] = useState({
+        user_email: user.email,
+       
+        from_name: 'Gamers Conquest',
+        to_name: user.username
+    })
+    const form = useRef();
+    const navigate = useHistory();
+
     useEffect(()=>{
         const  fetchData = async ()=>{
           const data = await fetch('/api/carts');
@@ -15,9 +27,11 @@ const ShoppingCartPage=()=>{
           setCart(json);
         }
     fetchData()
-      },[setCart])
+      },[setCart]);
    
-  
+
+
+
   
     useEffect(()=>{
         const  fetchData = async ()=>{
@@ -25,44 +39,39 @@ const ShoppingCartPage=()=>{
           const json = await data.json();
           setTotal(json);
         }
-    fetchData()
-      },[setTotal])
+    fetchData();
+      },[setTotal]);
   
 
    const handleChange=(e)=>{
        setQuantity(e.target.value)
-   }
+   };
    
-   
-   const handleSubmit=(e)=>{
-        e.preventDefault()
-    // console.log("clicked add button")
-        fetch('/api/add_item',{
-           method:"POST", 
-           headers: {'Content-Type': 'application/json',
-           'Accept':'application/json'},
-           body: JSON.stringify({
 
-   
-    
-         })
-        })
-}
+
+
+
     return(
         <div>
-            {cart? cart?.map((data)=>{
-                return       <div className="small-container cart-page">
+
+            {/* <form ref={form}onSubmit={sendEmail}>
+        {/* <input name="user_email"  value={user?.email}/>
+        <input name="to_name"  value={user?.username}/>
+        <input name="message"  value="Thanks for your purchase"/> */}
+        {/* <button>send email</button> */}
+            {/* </form> */} 
+
+            {cart? cart?.map((data,i)=>{
+                return       <div key={i} className="small-container cart-page">
                 <table>
+                    <thead>
                     <tr>
-                        <th>
-                            Game
-                        </th>
-                        <th>
-                        quantity
-                        </th>
+                        <th> Game</th>
+                        <th> Quantity</th>
                         <th>Price</th>
                     </tr>
-                  
+                    </thead>
+                    <tbody>
                     <tr>
                         <td >
                             <div className="cart-stuff">
@@ -71,8 +80,8 @@ const ShoppingCartPage=()=>{
                 <p>{data?.name}</p>
                 <small>Price:{data?.price}</small>
                 <br/>
-                {/* <a href="sdv">remove</a> */}
-                <Button onClick={()=>fetch(`/api/line_items/${data.id}`,{method:"DELETE"})}>remove</Button>
+             
+                <Button onClick={()=>fetch(`/api/line_items/${data.id}`,{method:"DELETE"}).then(alert("Item removed")).then(navigate.push("/games"))}>remove</Button>
             </div>
                             </div>
                         </td>
@@ -80,12 +89,14 @@ const ShoppingCartPage=()=>{
                         <td><input onChange={handleChange} type='number' /></td>
                         <td>${data?.price}</td>
                     </tr>
+                    </tbody>
                 </table>
         
     
             </div>
 
 }):null}
+
     <div className="total-price">
             <table>
                 <tr>
@@ -94,6 +105,8 @@ const ShoppingCartPage=()=>{
                 </tr>
             </table>
             </div>
+            <Button onClick={ ()=>navigate.push("/checkout")}>Proceed to Checkout</Button>
+
         </div>
 
   

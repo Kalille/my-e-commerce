@@ -3,7 +3,7 @@ class Cart < ApplicationRecord
   # has_many :products
   has_many :line_items, dependent: :destroy
   has_many :products, through: :line_items 
-
+ has_many :check_outs
   # def sub_total
   #   sum = 0
   #   self.line_items.each do |line_item|

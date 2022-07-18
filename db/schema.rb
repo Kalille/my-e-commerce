@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_15_044309) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_16_222032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_15_044309) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "check_outs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "total"
+    t.integer "quantity"
+    t.index ["cart_id"], name: "index_check_outs_on_cart_id"
+    t.index ["user_id"], name: "index_check_outs_on_user_id"
+  end
+
   create_table "liked_products", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "product_id", null: false
@@ -66,6 +77,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_15_044309) do
     t.integer "quantity", default: 1
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
     t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "ordered_items", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_ordered_items_on_cart_id"
+    t.index ["user_id"], name: "index_ordered_items_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -106,10 +126,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_15_044309) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "carts", "users"
+  add_foreign_key "check_outs", "carts"
+  add_foreign_key "check_outs", "users"
   add_foreign_key "liked_products", "products"
   add_foreign_key "liked_products", "users"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
+  add_foreign_key "ordered_items", "carts"
+  add_foreign_key "ordered_items", "users"
   add_foreign_key "product_reviews", "products"
   add_foreign_key "product_reviews", "users"
 end
