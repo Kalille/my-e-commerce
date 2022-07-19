@@ -3,6 +3,7 @@ import { CartContext } from '../context/CartContext';
 import Button from "../styles/Button";
 import { UserContext } from '../UserContext';
 import { useHistory } from "react-router-dom";
+import CartList from "./CartList";
 
 
 const ShoppingCartPage=()=>{
@@ -82,7 +83,7 @@ const ShoppingCartPage=()=>{
     
             </div>
 
-        }):null}
+        }):<CartList/>}
 
     <div className="total-price">
             <table>
