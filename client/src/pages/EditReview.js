@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import {useParams,useHistory} from 'react-router-dom'
-// import { Error,Button,Textarea,FormField } from "../styles";
 import Button from "../styles/Button";
 import FormField from "../styles/FormField";
 import Error from "../styles/Error"
@@ -52,32 +51,26 @@ const EditReview=()=>{
 
     return(
         <div>
-           
-             <p>
-               <h3><label style={{fontWeight: "bold"}}> Your Original Comment</label></h3> 
-                <div class="card">
-  <div class="card-body">
-  {comment?.review} 
-  </div>
-</div>
-               {/* <Textarea type='text' value={`${comment?.review}`} >  </Textarea>  <Button onClick={(e)=>fetch(`/api/product_reviews/${id}`,{
-            method: 'DELETE'
-        })
-        .then(navigate.push(`/game/${id}`))}>delete</Button> */}
-            </p>
+            <p>
+             <h3><label style={{fontWeight: "bold"}}> Your Original Comment</label></h3> 
+                 <div class="card">
+                     <div class="card-body">
+                            {comment?.review} 
+                     </div>
+                 </div>
+             </p>
             <Button onClick={(e)=>fetch(`/api/product_reviews/${id}`,{
             method: 'DELETE'
         })
         .then(navigate.push(`/game/${comment.product_id}`))}>delete</Button> 
             <form onSubmit={handleSubmit}>
-            <Textarea onChange={handleChange} placeholder="Edit Comment Here..." type='text-field'>
-             </Textarea>
-             <Button> Edit</Button>
-             <FormField>
-              {errors?.map((err) => (
-                <Error key={err}>{err}</Error>
+                 <Textarea onChange={handleChange} placeholder="Edit Comment Here..." type='text-field'> </Textarea>
+                <Button> Edit</Button>
+                 <FormField>
+                {errors?.map((err) => (
+                  <Error key={err}>{err}</Error>
               ))}
-            </FormField>
+                </FormField>
             </form> 
       
         </div>

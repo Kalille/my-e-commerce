@@ -24,6 +24,9 @@ default: &default
 development:
   <<: *default
   database: my_ecommerce_development
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +60,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  adapter: postgresql
   database: my_ecommerce_test
+  pool: 5
+  timeout: 5000
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +87,9 @@ test:
 #
 production:
   <<: *default
+  adapter: postgressql
   database: my_ecommerce_production
   username: my_ecommerce
+  pool: 5
   password: <%= ENV["MY_ECOMMERCE_DATABASE_PASSWORD"] %>
+  timeout: 5000

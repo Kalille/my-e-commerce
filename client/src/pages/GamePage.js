@@ -4,18 +4,18 @@ import Button from "../styles/Button";
 import {Link, useHistory} from 'react-router-dom'
 import LikeButton from '../components/LikeButton';
 import AddToCartButton from '../components/AddToCartButton';
-// import { useHistory } from "react-router-dom";
+
 
 
 
 const GamePage=()=>{
-    const {merch} = useContext(GameContext)
-   const navigate = useHistory()
+    const {merch} = useContext(GameContext);
+   const navigate = useHistory();
 
    useEffect(()=>{
        fetch('/api/carts')
        .then(res=>res.json())
-   })
+   },[]);
 
 
 const thumbsUpIcon = <svg xmlns="http://www.w3.org/2000/svg" width="30" height="50" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">

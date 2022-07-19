@@ -1,7 +1,7 @@
 class Api::LikedProductsController < ApplicationController
   skip_before_action :authorize, only: :index
 
-  # user = @current_user ||= User.find(session[:user_id]) 
+
 def index
           render json: LikedProduct.all
 end

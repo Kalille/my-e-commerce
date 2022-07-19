@@ -4,9 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const Home=()=>{
 
-    // const dispatch = useDispatch()
-    // const products = useSelector((state) => state.ecommerce.products)
-    // console.table(dispatch(fetchAllProductsAsync))
+
     return(
         <div className='home-header'>  
                 <div className='home-row'>
@@ -18,7 +16,7 @@ const Home=()=>{
             <a href='/' className='explore-button'>explore</a>
         </div>
         <div className='col-2'>
-    <img src='https://m.media-amazon.com/images/I/71vzjnUWwtL._AC_SY450_.jpg' alt='Games Galore'/>
+             <img src='https://m.media-amazon.com/images/I/71vzjnUWwtL._AC_SY450_.jpg' alt='Games Galore'/>
    
         </div>
 

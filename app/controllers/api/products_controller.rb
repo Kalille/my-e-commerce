@@ -9,10 +9,7 @@ class Api::ProductsController < ApplicationController
         render json: product,include: [:product_reviews, :liked_product]
       end
 
-      def new
-        @product = Product.new
-        render json: @product
-      end
+    
       
       def create
    

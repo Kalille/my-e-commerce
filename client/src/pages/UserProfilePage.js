@@ -26,24 +26,20 @@ useEffect(()=>{
     return(
 <div>
         <div className="profile-wrapper">
-   
-           
-                <div className="left">
-
-                    <img style={{width:"150px"}} src={user?.image_url} alt='none available'/>
-
-                    <h4>{user?.username} </h4>
-                </div>
-                <div className="right">
-        <div className='profile-info'>
-            <h3>info</h3>
+              <div className="left">
+                     <img style={{width:"150px"}} src={user?.image_url} alt='none available'/>
+                     <h4>{user?.username} </h4>
+             </div>
+        <div className="right">
+             <div className='profile-info'>
+                    <h3>info</h3>
             <div className='info-data'>
                 <div className='profile-data'>
-                <h4>Name</h4>
+                     <h4>Name</h4>
                     <p>{user?.username}</p>
                 </div>
                 <div className='profile-data'>
-                <h4>email</h4>
+                     <h4>email</h4>
                     <p>{user?.email}</p>
                  
                 </div>
@@ -66,7 +62,7 @@ useEffect(()=>{
         </div>
 
         <div className='profile-pro'>
-            <h3>Activity</h3>
+                 <h3>Activity</h3>
             <div className='pro-data'>
                 <div className='profile-data'>
                
@@ -74,35 +70,11 @@ useEffect(()=>{
             </div>
         </div>
         
-                </div>
-                <br/>
-             
-                {/* { showMe ? <Button onClick={handleShowmeClick}>show reviews</Button>
-    
-    :<div>
-        <Button onClick={()=>setShowMe(true)}>close</Button>
-        {myReview ? myReview.map((data,i)=>{
-            if (i <= 6)
-            return  <div key={i} className="container">
-    
-         <div class="row">
-             <div style={{fontWeight: "bold" ,color:'red'}} class="col-sm-4">{user.username} said....</div>
-            
-                    <div class="col-sm-8"> {data.review}</div>
-                  
-         </div>   
-         <hr/>
          </div>
-        }):<p>Tell us How You Feel About Our Games</p>}
-         </div>} */}
+         </div>
           
            
- 
-            
-            </div>
-          
-           
-            </div>
+         </div>
     )
 }
 

@@ -18,66 +18,6 @@ function LoginForm() {
   const {onLogin,user} = useContext(UserContext)
   const {setCart,cart} = useContext(CartContext)
 
-// console.log(JSON.stringify(user?.id))
-// console.log(user?.id)
-
-
-//   const createCartForUser = async (user) => {
-//     const userLoggingIn = user.id
-   
-// const fetchData= await fetch(`http://localhost:3000/api/carts`, {
-//     method: "POST",
-//     headers: {"content-type": "application/json"},
-//     body: JSON.stringify({
-//            user_id: userLoggingIn.id
-//     })
-//  })
-//  const data = await fetchData.json()
-//  setCart(data)
-//     // .then(res => res.json())
-//   //   .then((cart) => {
-//   //      console.log(cart, "cart created!")
-//   //      setCart(cart)  ;
-//   //  })
-//  }
-
-//   const checkIfCartExists = async (user) => {
-//     const userLoggingIn = user.id
-  
-//    const fetchData = await  fetch("http://localhost:3000/api/find_cart", {
-//      method: "POST",
-//      headers: {"content-type": "application/json"},
-//      body: JSON.stringify({
-//           user_id: userLoggingIn
-//      })
-//  })
-
-//  const data = await fetchData.json()
-
-//  if (data.id){
-//    setCart(data)
-//  }
-//  else{
-//   createCartForUser(userLoggingIn)
-//  }
-//     // .then(res => res.json())
-//     // .then(cart => {
-//     //     if(cart.id){
-//     //       console.log(cart, "cart already exists!")
-//     //       .then(setCart(cart))
-//     //         // cart.json().then((err) => setErrors(err.errors));
-          
-//     //       // currentCart = cart; //set cart as global var currentCart
-//     //     } 
-//     //     else {
-//     //       createCartForUser(userLoggingIn)
-         
-//     //     }
-//     //  })
-//  }
-
-
-
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -97,7 +37,7 @@ function LoginForm() {
         r.json().then((err) => setErrors(err.errors));
       }
     });
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>

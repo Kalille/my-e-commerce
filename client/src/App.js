@@ -22,11 +22,10 @@ import EditReview from './pages/EditReview';
 
 
 function App() {
-  // const [user, setUser] = useState(null);
-  // const {setMerch} = useContext(GameContext);
+
   const {user,setUser} = useContext(UserContext);
-  const {cart,setCart} = useContext(CartContext)
-  // const [gameData, setGameData]= useState('')
+  const {setCart} = useContext(CartContext)
+  
 
   useEffect(() => {
     fetch("/api/me").then((r) => {
@@ -35,7 +34,7 @@ function App() {
       }
     });
   }, [setUser]);
-  // console.table(user)
+  
 
   useEffect(()=>{
     const  fetchData = async ()=>{
@@ -44,7 +43,8 @@ function App() {
       setCart(json);
     }
 fetchData()
-  },[setCart])
+  },[setCart]);
+
   useEffect(()=>{
     const  fetchData = async ()=>{
       const data = await fetch('/api/me');
@@ -52,9 +52,11 @@ fetchData()
       setUser(json);
     }
 fetchData()
-  },[setUser])
+  },[setUser]);
+
 
   if (!user) return <LoginPage onLogin={setUser} />;
+
   return (
     <div className="App">
     
@@ -62,34 +64,43 @@ fetchData()
 <Switch>
  
 
-<Route path="/home">
+        <Route path="/home">
             <Home/>
            </Route>
-           <Route path="/games">
+
+         <Route path="/games">
             <GamePage/>
            </Route>
-           <Route path="/login">
+
+         <Route path="/login">
             <LoginForm/>
            </Route>
-           <Route path="/signup">
+
+          <Route path="/signup">
             <SignUp/>
            </Route>
-           <Route path="/loginPage">
+
+         <Route path="/loginPage">
             <LoginPage/>
            </Route>
-           <Route path="/shoppingCart">
+
+         <Route path="/shoppingCart">
             <ShoppingCartPage/>
            </Route>
-           <Route path="/game/:id">
+
+         <Route path="/game/:id">
             <GameShowPage/>
            </Route>
-           <Route path="/user">
+
+         <Route path="/user">
             <UserProfilePage/>
            </Route>
-           <Route path="/checkout">
+
+          <Route path="/checkout">
             <CheckOutPage/>
            </Route>
-           <Route path="/edit/:id">
+
+         <Route path="/edit/:id">
             <EditReview/>
            </Route>
 
