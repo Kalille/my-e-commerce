@@ -3,7 +3,7 @@ import {useParams,useHistory} from 'react-router-dom'
 import Button from "../styles/Button";
 import FormField from "../styles/FormField";
 import Error from "../styles/Error"
-import Textarea from "../styles/Input";
+import Textarea from "../styles/TextArea";
 
 
 const EditReview=()=>{
@@ -51,18 +51,16 @@ const EditReview=()=>{
 
     return(
         <div>
-            <p>
              <h3><label style={{fontWeight: "bold"}}> Your Original Comment</label></h3> 
-                 <div class="card">
-                     <div class="card-body">
+            
+            
+                 <div className="card">
+                     <div className="card-body">
                             {comment?.review} 
                      </div>
                  </div>
-             </p>
-            <Button onClick={(e)=>fetch(`/api/product_reviews/${id}`,{
-            method: 'DELETE'
-        })
-        .then(navigate.push(`/game/${comment.product_id}`))}>delete</Button> 
+             
+            <Button onClick={(e)=>fetch(`/api/product_reviews/${id}`,{ method: 'DELETE' }).then(navigate.push(`/game/${comment.product_id}`))}>delete</Button> 
             <form onSubmit={handleSubmit}>
                  <Textarea onChange={handleChange} placeholder="Edit Comment Here..." type='text-field'> </Textarea>
                 <Button> Edit</Button>

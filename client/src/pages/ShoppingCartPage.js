@@ -11,12 +11,7 @@ const ShoppingCartPage=()=>{
     const [total,setTotal] =useState('')
     const [quantity,setQuantity] =useState('')
     const [errors,setErrors] =useState([])
-    const [emailParams, setEmailParams] = useState({
-        user_email: user.email,
-       
-        from_name: 'Gamers Conquest',
-        to_name: user.username
-    })
+ 
     const form = useRef();
     const navigate = useHistory();
 
@@ -53,7 +48,7 @@ const ShoppingCartPage=()=>{
 
     return(
         <div>
-            {cart? cart?.map((data,i)=>{
+            {cart ? cart?.map((data,i)=>{
                 return       <div key={i} className="small-container cart-page">
                 <table>
                     <thead>
@@ -73,7 +68,7 @@ const ShoppingCartPage=()=>{
                      <small>Price:{data?.price}</small>
                             <br/>
              
-                <Button onClick={()=>fetch(`/api/line_items/${data.id}`,{method:"DELETE"}).then(alert("Item removed")).then(navigate.push("/games"))}>remove</Button>
+                <Button onClick={()=>fetch(`/api/line_items/${data.id}`,{method:"DELETE"}).then(alert("Item has been removed")).then(navigate.push("/games"))}>remove</Button>
                  </div>
                             </div>
                         </td>

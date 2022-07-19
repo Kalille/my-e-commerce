@@ -5,7 +5,7 @@ const CartContext= createContext();
 
 function CartProvider({children}){
     const [cart, setCart]=useState([]);
- 
+ console.log(cart)
     useEffect(()=>{
         const  fetchData = async ()=>{
           const data = await fetch('/api/carts');
@@ -14,8 +14,7 @@ function CartProvider({children}){
         }
     fetchData()
       },[])
-
-
+  
     return(
         <CartContext.Provider value={{cart,setCart}}>
     

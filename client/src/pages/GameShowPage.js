@@ -8,14 +8,14 @@ import Error from "../styles/Error"
 import Label from "../styles/Label";
 import Input from "../styles/Input";
 import Textarea from "../styles/Input";
-import { setUseProxies } from "immer";
+import { UserContext } from '../UserContext';
 
 
 const GameShowPage=()=>{
-
+  const {user} = useContext(UserContext)
 const [merch, setMerch] = useState([])
 const [review, setReview] = useState('')
-const [users, setUsers] = useState('')
+const [allUser, setAllUser] = useState('')
 
 const [errors, setErrors] = useState([])
 const [showMe, setShowMe] = useState(true)
@@ -52,7 +52,7 @@ const handleSubmit=(e)=>{
 useEffect(()=>{
   fetch("/api/users")
   .then(res=> res.json())
-  .then(res=>setUsers(res))
+  .then(res=>setAllUser(res))
 },[]);
 
    useEffect(() => {
@@ -102,15 +102,15 @@ const handleShowmeClick=()=>{
             ))}
               <h3 style={{fontWieght: 'bold'}}> Reviews </h3>
                 {merch ?  merch.product_reviews?.map((data,i)=>(
-                users.map((user,i)=>{
-                  if (user.id === data.user_id)
+                allUser.map((u,i)=>{
+                  if (u.id ===data.user_id)
                   return   <div key={i} className="container">
                 
-                  <div class="row">
-                           <div style={{fontWeight: "bold" ,color:'red'}} class="col-sm-4">{user.username} said....</div>
+                  <div className="row">
+                           <div style={{fontWeight: "bold" ,color:'red'}} className="col-sm-4">{u.username} said....</div>
                        
-                          <div class="col-sm-8"> {data.review}</div>
-                          {user.id === data.user_id ? <Button onClick={()=>navigate.push(`/edit/${data.id}`)}> edit</Button>: null}
+                          <div className="col-sm-8"> {data.review}</div>
+                          {user.id === data.user_id ? <Button onClick={()=>navigate.push(`/edit/${data.id}`)}> edit</Button> : null}
                         
                   </div>   
                   <hr/>
