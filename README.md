@@ -1,24 +1,41 @@
 # README
+DESCRIPTION
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Gamers conquest is ecommerce web page I created which allows users to browse and shop alot of the latest games.
+It was built using Ruby on Rails version 2.7.4 for the backend and React frontend, Third party API provided by best buy, React bootstrap and emailjs.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+SETUP
 
-* Configuration
+To run this app:
 
-* Database creation
+bundle install
+rails db:create db:migrate db:seed (backend)
+npm install --prefix client
 
-* Database initialization
 
-* How to run the test suite
+REFLECTIONS
 
-* Services (job queues, cache servers, search engines, etc.)
+My goals were to:
 
-* Deployment instructions
+Use the full CRUD actions on at least one model
 
-* ...
+Allow user to be able to browse items
+
+Allow user to add and delete items to a cart
+
+Allow the user to checkout their items
+
+Allow the user to add, delete and update comments on products
+
+Use has_many through relations between models
+
+Create more than 3 routes
+
+Add emailjs to send confirmation email to user
+
+
+
+
+
