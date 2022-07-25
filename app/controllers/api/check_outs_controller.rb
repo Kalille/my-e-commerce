@@ -10,7 +10,7 @@ class Api::CheckOutsController < ApplicationController
         item_quantity = @cart.products.length
         cart_amount = @cart.total
        order = @current_user.check_outs.create!(cart_id: @cart.id,total: cart_amount, quantity: item_quantity)   
-      if order.save
+            if order.save
             @cart.line_items.each do |item|
              item.delete
     

@@ -51,37 +51,37 @@ const ShoppingCartPage=()=>{
         <div>
             {cart ? cart?.map((data,i)=>{
                 return       <div key={i} className="small-container cart-page">
-                <table>
-                    <thead>
-                         <tr>
-                            <th> Game</th>
-                            <th> Quantity</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td >
-                            <div className="cart-stuff">
-                                 <img src={data?.image_url} alt=''/>
-                 <div>
-                     <p>{data?.name}</p>
-                     <small>Price:{data?.price}</small>
-                            <br/>
+                                    <table>
+                                         <thead>
+                                             <tr>
+                                             <th> Game</th>
+                                              <th> Quantity</th>
+                                             <th>Price</th>
+                                             </tr>
+                                          </thead>
+                                    <tbody>
+                                         <tr>
+                                             <td >
+                                             <div className="cart-stuff">
+                                                    <img src={data?.image_url} alt=''/>
+                                                 <div>
+                                                         <p>{data?.name}</p>
+                                                         <small>Price:{data?.price}</small>
+                                                         <br/>
              
-                <Button onClick={()=>fetch(`/api/line_items/${data.id}`,{method:"DELETE"}).then(alert("Item has been removed")).then(navigate.push("/games"))}>remove</Button>
-                 </div>
-                            </div>
-                        </td>
+                                                 <Button onClick={()=>fetch(`/api/line_items/${data.id}`,{method:"DELETE"}).then(alert("Item has been removed")).then(navigate.push("/games"))}>remove</Button>
+                                                 </div>
+                                             </div>
+                                            </td>
                        
-                        <td><input onChange={handleChange} type='number' /></td>
-                        <td>${data?.price}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                                                 <td><input onChange={handleChange} type='number' /></td>
+                                                 <td>${data?.price}</td>
+                                         </tr>
+                                    </tbody>
+                                    </table>
         
     
-            </div>
+                             </div>
 
         }):<CartList/>}
 

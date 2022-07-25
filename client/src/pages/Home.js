@@ -1,6 +1,5 @@
 import React from 'react'
-// import   fetchAllProductsAsync from './ecommerceSlice'
-import { useSelector, useDispatch } from 'react-redux'
+
 
 const Home=()=>{
 

@@ -28,21 +28,21 @@ const fetchData = await  fetch("api/liked_products", {
 
 const data = await fetchData.json()
 
-if (data.id){
+        if (data.id){
 
-  setMerch(merch)
+                 setMerch(merch)
 
 
 }
-else{
-    setErrors(data.errors)
+        else{
+                 setErrors(data.errors)
 }
 
    
 }
-    return(
+         return(
 
-        <div >     Drop a Like <Button  style={{borders: "none"}} onClick={handleClick} className='thumbsUp'>{thumbsUpIcon} </Button>Total Likes {likeCount}</div>
+                 <div >     Drop a Like <Button  style={{borders: "none"}} onClick={handleClick} className='thumbsUp'>{thumbsUpIcon} </Button>Total Likes {likeCount}</div>
      
     )
 }

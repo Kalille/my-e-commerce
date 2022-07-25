@@ -20,21 +20,20 @@ const CheckOutPage = ()=>{
 
     const sendEmail = (e) => {
    const params = {
-
-    user_email: user.email,
-    to_name: user.username,
-    total: total
+             user_email: user.email,
+            to_name: user.username,
+            total: total
    }
-      e.preventDefault();
+          e.preventDefault();
   
       emailjs.send( 
     //  process.env.REACT_APP_EMAILJS_SERVICE_ID, 
-  "service_jcpasx8",
+         "service_jcpasx8",
     // process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-  "template_mpqdoou",
+         "template_mpqdoou",
      params,
     //   process.env.REACT_APP_EMAILJS_USER_ID
-      "YDI0u74rcgGXbO-JB"
+         "YDI0u74rcgGXbO-JB"
       )
         .then((result) => {
             alert("Order Submitted ");

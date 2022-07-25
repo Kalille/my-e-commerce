@@ -11,7 +11,7 @@ const [quantity,setQuantity]=useState(1)
 const navigate = useHistory()
 const [product,setProduct] =useState('')
 const [errors,setErrors] = useState([])
-// console.log(myGame)
+
 const handleChange=(e)=>{
     if (e.target.value >= 1)
     setQuantity(e.target.value)
@@ -19,33 +19,10 @@ const handleChange=(e)=>{
 
 }
 
-    // const handleSubmit=(e)=>{
-    //         e.preventDefault()
-    //     // console.log("clicked add button")
-    //         fetch('/api/add_item',{
-    //            method:"POST", 
-    //            headers: {'Content-Type': 'application/json',
-    //            'Accept':'application/json'},
-    //            body: JSON.stringify({
-
-    //      product_id: gameId,
-    //      quantity: quantity
-    //          })
-    //          .then((r) => {
-             
-    //             if (r.ok) {
-    //               r.json().then((data) => setProduct(data)).then(navigate.push('/shoppingCart'));
-    //             } else {
-    //               r.json().then((err) => setErrors(err.errors));
-    //             }
-    //           })
-    //         })
-    // }
-
 
     const handleSubmit= async(e)=>{
         e.preventDefault()
-  console.log("clicked")
+
   const fetchData = await  fetch("/api/line_items", {
             method: "POST",
             headers: {"content-type": "application/json"},
@@ -57,17 +34,17 @@ const handleChange=(e)=>{
   
   const data = await fetchData.json()
   
-  if (data.id){
+        if (data.id){
  
-    setCart([...cart,data])
+             setCart([...cart,data])
   
  
   }
-  else{
-      setErrors(data.errors)
+         else{
+             setErrors(data.errors)
   }
-  navigate.push('/games')
-  console.log('submitted')
+             navigate.push('/games')
+
      
   }
     return(

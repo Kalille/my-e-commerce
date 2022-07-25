@@ -33,4 +33,4 @@ product_data()
 
 
 Cart.destroy_all
-User.create(username: "Jamal",password: "Password")
+User.create(username: "Jamal",password: "Password", email: "example@yahoo.com")

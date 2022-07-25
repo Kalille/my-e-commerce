@@ -61,6 +61,7 @@ const EditReview=()=>{
                  </div>
              
             <Button onClick={(e)=>fetch(`/api/product_reviews/${id}`,{ method: 'DELETE' }).then(navigate.push(`/game/${comment.product_id}`))}>delete</Button> 
+            
             <form onSubmit={handleSubmit}>
                  <Textarea onChange={handleChange} placeholder="Edit Comment Here..." type='text-field'> </Textarea>
                 <Button> Edit</Button>
