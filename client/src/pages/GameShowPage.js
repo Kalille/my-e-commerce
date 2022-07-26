@@ -15,7 +15,7 @@ const GameShowPage = () => {
   const [merch, setMerch] = useState([]);
   const [comment, setComment] = useState();
   const [review, setReview] = useState("");
-  const [allUser, setAllUser] = useState("");
+  const [allUser, setAllUser] = useState([]);
 
   const [errors, setErrors] = useState([]);
   const [showMe, setShowMe] = useState(true);
@@ -125,7 +125,7 @@ const GameShowPage = () => {
                     <h3 style={{ fontWieght: "bold" }}> Reviews </h3>
                     {merch
                       ? merch.product_reviews?.map((data, i) =>
-                          allUser.map((u, i) => {
+                          allUser?.map((u, i) => {
                             if (u.id === data.user_id)
                               return (
                                 <div key={i} className="container">

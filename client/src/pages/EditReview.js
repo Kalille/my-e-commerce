@@ -8,7 +8,7 @@ import Textarea from "../styles/TextArea";
 
 const EditReview=()=>{
     const {id,} = useParams()
-    const [comment, setComment]=useState('')
+    const [comment, setComment]=useState([])
     const [description, setDescription] = useState('')
     const [errors, setErrors]=useState([])
     const navigate = useHistory()
