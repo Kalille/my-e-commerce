@@ -49,6 +49,16 @@ const EditReview=()=>{
     
     }
 
+    const deleteReview = (e)=>{
+        e.preventDefault()
+        fetch(`/api/product_reviews/${id}`,{ 
+            method: 'DELETE' 
+        })
+        .then(res=>res.json())
+        .then(setComment(comment))
+        .then(navigate.push(`/game/${comment.product_id}`))
+    }
+
     return(
         <div>
              <h3><label style={{fontWeight: "bold"}}> Your Original Comment</label></h3> 
@@ -60,10 +70,10 @@ const EditReview=()=>{
                      </div>
                  </div>
              
-            <Button onClick={(e)=>fetch(`/api/product_reviews/${id}`,{ method: 'DELETE' }).then(navigate.push(`/game/${comment.product_id}`))}>delete</Button> 
-            
+            <Button onClick={deleteReview}>delete</Button> 
+
             <form onSubmit={handleSubmit}>
-                 <Textarea onChange={handleChange} placeholder="Edit Comment Here..." type='text-field'> </Textarea>
+                 <Textarea onChange={handleChange}  type='text-field'> </Textarea>
                 <Button> Edit</Button>
                  <FormField>
                 {errors?.map((err) => (

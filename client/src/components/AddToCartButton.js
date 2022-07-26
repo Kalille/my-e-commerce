@@ -36,7 +36,7 @@ const handleChange=(e)=>{
   
         if (data.id){
  
-             setCart([...cart,data])
+             setCart(...cart,data)
   
  
   }

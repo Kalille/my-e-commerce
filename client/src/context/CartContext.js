@@ -1,27 +1,18 @@
-import { createContext,useState,useEffect} from "react";
-import { UserContext } from "../UserContext";
+import { createContext, useState } from "react";
 
-const CartContext= createContext();
 
-function CartProvider({children}){
-    const [cart, setCart]=useState([]);
+const CartContext = createContext();
 
-    useEffect(()=>{
-        const  fetchData = async ()=>{
-          const data = await fetch('/api/carts');
-          const json = await data.json();
-          setCart(json);
-        }
-    fetchData()
-      },[])
-  
-    return(
-        <CartContext.Provider value={{cart,setCart}}>
-    
-            {children}
-        </CartContext.Provider>)
+function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
 
+
+
+  return (
+    <CartContext.Provider value={{ cart, setCart }}>
+      {children}
+    </CartContext.Provider>
+  );
 }
 
-
-export {CartContext, CartProvider}
+export { CartContext, CartProvider };

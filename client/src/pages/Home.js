@@ -12,7 +12,7 @@ const Home=()=>{
          
             </h1>
             <p>   Where Your Search For The Hottest Games Is Over!!</p>
-            <a href='/' className='explore-button'>explore</a>
+            <a href='/loginPage' className='explore-button'>Sign in</a>
         </div>
         <div className='col-2'>
              <img src='https://m.media-amazon.com/images/I/71vzjnUWwtL._AC_SY450_.jpg' alt='Games Galore'/>

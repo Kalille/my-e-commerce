@@ -4,14 +4,20 @@ class Api::UsersController < ApplicationController
       render json: User.all
     end
     def create
+      byebug
       user = User.create!(user_params)
   
-  
+      # if user
+
       session[:user_id] = user.id
       user.cart = Cart.create()
       
      
       render json: user, status: :created
+      # else 
+
+      #   render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+      # end
     end
 
     def my_reviews
@@ -27,7 +33,7 @@ class Api::UsersController < ApplicationController
     private
   
     def user_params
-      params.require(:user).permit(:username, :image,:email, :password, :password_confirmation)
+      params.permit(:username, :image, :email, :password, :password_confirmation)
     end
   
 end
