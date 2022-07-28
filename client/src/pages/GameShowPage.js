@@ -48,6 +48,7 @@ const GameShowPage = () => {
       }),
     }).then((r) => {
       if (r.ok) {
+        e.target.reset()
         r.json().then((data) => {
           setReview(data);
           setMerch((merch) => ({
@@ -62,6 +63,7 @@ const GameShowPage = () => {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+    
   };
   useEffect(() => {
     fetch("/api/users")
